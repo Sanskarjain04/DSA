@@ -3,12 +3,10 @@ public:
     const int M = 1e9+7;
     vector<int> prefixSumArr;
     NumArray(vector<int>& nums) {
-        for(int i=0;i<nums.size();i++){
-        int sum = 0;
-            for(int j=0;j<=i;j++){
-                sum = sum + nums[j];
-            }
-            prefixSumArr.push_back(sum);
+        prefixSumArr.resize(nums.size());
+        prefixSumArr[0] = nums[0];
+        for(int i=1;i<nums.size();i++){
+            prefixSumArr[i] = prefixSumArr[i-1]+nums[i];
         }
     }
     
