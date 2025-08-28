@@ -1,15 +1,10 @@
 class Solution {
 private:
-    int GCD(int sumOdd,int sumEven){
-        int GCD = 1;
-        int minNum = min(sumOdd,sumEven);
-
-        for(int i=1;i<=minNum;i++){
-            if(sumOdd%i==0 && sumEven%i==0){
-                GCD = max(GCD,i);
-            }
+    int GCD(int a,int b){
+        if(b==0){
+            return a;
         }
-        return GCD;
+        return GCD(b,a%b);
     }
 public:
     int gcdOfOddEvenSums(int n) {
