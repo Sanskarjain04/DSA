@@ -1,10 +1,10 @@
 class Solution {
 public:
     int earliestTime(vector<vector<int>>& tasks) {
-        int mini=1e9;
-        for(int i=0;i<tasks.size();i++){
-            mini=min(tasks[i][0]+tasks[i][1],mini);
+        int shortestTime = 1e9;
+        for(auto arr:tasks){
+            shortestTime = min(shortestTime,(arr[0]+arr[1]));
         }
-        return mini;
+        return shortestTime;
     }
 };
