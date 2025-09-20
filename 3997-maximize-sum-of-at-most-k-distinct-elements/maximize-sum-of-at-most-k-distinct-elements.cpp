@@ -1,14 +1,14 @@
 class Solution {
 public:
     vector<int> maxKDistinct(vector<int>& nums, int k) {
+        set<int> st(nums.begin(), nums.end());
         vector<int> ans;
-        sort(nums.rbegin(),nums.rend());
+        int count = 0;
 
-        for(int i=0;i<nums.size() && ans.size()<k;i++){
-            if(ans.empty() || nums[i] != ans.back()){
-                ans.push_back(nums[i]);
-            }
+        for(auto it = st.rbegin(); it != st.rend() && count < k; ++it) {
+            ans.push_back(*it);
+            count++;
         }
         return ans;
-        }
+    }
 };
