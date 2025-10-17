@@ -1,22 +1,21 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        vector<int> ans;
-        int left = 0;
-        int right = 0;
+        vector<int> pos, neg;
         
-        while(left<nums.size() && right<nums.size()){
-            while(left<nums.size() && nums[left]<0){
-                left++;
-            }
-            ans.push_back(nums[left]);
-            left++;
-            while(right<nums.size() && nums[right]>=0){
-                right++;
-            }
-            ans.push_back(nums[right]);
-            right++;
+        // Step 1: Split into positives and negatives
+        for (int n : nums) {
+            if (n > 0) pos.push_back(n);
+            else neg.push_back(n);
         }
+
+        // Step 2: Merge alternately
+        vector<int> ans;
+        for (int i = 0; i < pos.size(); i++) {
+            ans.push_back(pos[i]);
+            ans.push_back(neg[i]);
+        }
+
         return ans;
     }
 };
